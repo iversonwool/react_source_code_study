@@ -1,13 +1,19 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import {root} from './index'
 
+function App() {
+  const [count, setCount] = React.useState(0)
 
   
   return (
     <div className="App">
       <header className="App-header">
+        <button onClick={()=> setCount(count+1)}>click me</button>
+        <button onClick={()=> root.render(<App />)}>another app</button>
+        <span>{count}</span>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -21,6 +27,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <AnotherApp>
+        <div>x</div>
+        <div>y</div>
+      </AnotherApp>
     </div>
   );
 }
@@ -88,4 +98,7 @@ function performUnitOfWork(fiber) {
   }
 }
 
-
+function AnotherApp(props) {
+  console.log('anotherApp', typeof props.children)
+  return <div>AnotherApp</div>
+}
