@@ -1,36 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import obj from './script1'
 import {root} from './index'
 
 function App() {
   const [count, setCount] = React.useState(0)
 
-  
+  React.useEffect(() => {
+    console.log('App useEffect' )
+  }, [])
+
+  console.log('obj', obj)
   return (
     <div className="App">
-      <header className="App-header">
-        <button onClick={()=> setCount(count+1)}>click me</button>
-        <button onClick={()=> root.render(<App />)}>another app</button>
-        <span>{count}</span>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <AnotherApp>
-        <div>x</div>
-        <div>y</div>
-      </AnotherApp>
+      <header className="App-header">header</header>
+      <Content />
     </div>
   );
 }
@@ -98,7 +83,37 @@ function performUnitOfWork(fiber) {
   }
 }
 
-function AnotherApp(props) {
+function Content(props) {
+
+  React.useEffect(() => {
+    console.log('Content useEffect' )
+  }, [])
   console.log('anotherApp', typeof props.children)
-  return <div>AnotherApp</div>
+  return (
+    <>
+      <p>1</p>
+      <p>2</p>
+    </>
+  )
+}
+
+function Com() {
+
+  return (
+    <>
+      {
+        [
+          1, 2, 3
+        ]
+      }
+    </>
+  )
+
+  // return (
+  //   <>
+
+  //     <p>1</p>
+  //     <p>2</p>
+  //   </>
+  // )
 }
