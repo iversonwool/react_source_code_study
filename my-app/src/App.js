@@ -1,21 +1,36 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import obj from './script1'
 import {root} from './index'
 
-function App() {
-  const [count, setCount] = React.useState(0)
 
-  React.useEffect(() => {
+function Header() {
+  return (
+    <>
+      <h1>title</h1>
+      <h2>title2</h2>
+    </>
+  )
+}
+
+function App() {
+  const [count, setCount] = useState(0)
+  const [list, setList] = useState(['A', 'B', 'C'])
+  useEffect(() => {
     console.log('App useEffect' )
   }, [])
 
   console.log('obj', obj)
   return (
     <div className="App">
-      <header className="App-header">header</header>
-      <Content />
+      <Header />
+      {/* <button onClick={() => {setCount(count + 1)}}>点击发起更新 {count}</button> */}
+
+      <button className="customButton" onClick={() => {setList(['C', 'A', 'X'])}}>点击发起更新</button>
+      <div>
+        {list.map(item => <p key={item}>{item}</p>)}
+      </div>
     </div>
   );
 }
@@ -85,7 +100,7 @@ function performUnitOfWork(fiber) {
 
 function Content(props) {
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('Content useEffect' )
   }, [])
   console.log('anotherApp', typeof props.children)
