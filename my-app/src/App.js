@@ -4,6 +4,18 @@ import './App.css';
 import obj from './script1'
 import {root} from './index'
 
+function getArray(obj) {
+  const {title} = obj
+  return [
+    {title: '1', id: '1', render() { return title ? title : 'custom' }},
+    {title: '1', id: '2',}, 
+    {title: '1', id: '3', render() { return 'custom' }}, 
+    {title: '1', id: '4', render() { return 'custom' }}, 
+    {title: '1', id: '5', }, 
+    {title: '1', id: '6', render() { return 'custom' }}, 
+    {title: '1', id: '7',},
+  ]
+}
 
 function Header() {
   return (
@@ -24,7 +36,18 @@ function App() {
   // const footer = createElement('div', { style: {fontSize: 20}, children: 'footer' }, )
 
   // console.log('obj', obj)
-  return <div>Hello, React!</div>
+  const changeArray = () => {
+    // setArray(getArray({}))
+    array.push({id: 'ss', title: 'ss'})
+    setArray([...array])
+  }
+  const [array, setArray] = useState(getArray({}))
+  return (
+    <div>Hello, React!
+      <button onClick={changeArray}>click me</button>
+      <TestDependcies array={array} />
+    </div>
+  )
   // return (
   //   <div className="App">
   //     <Header />
@@ -135,4 +158,17 @@ function Com() {
   //     <p>2</p>
   //   </>
   // )
+}
+
+function TestDependcies(props) {
+  const {array} = props
+
+  useEffect(() => {
+    console.log('rerender by array changes')
+  }, [array])
+  return (
+    <div>
+
+    </div>
+  )
 }
