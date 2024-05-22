@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, createElement} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import obj from './script1'
@@ -15,24 +15,28 @@ function Header() {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [list, setList] = useState(['A', 'B', 'C'])
-  useEffect(() => {
-    console.log('App useEffect' )
-  }, [])
+  // const [count, setCount] = useState(0)
+  // const [list, setList] = useState(['A', 'B', 'C'])
+  // useEffect(() => {
+  //   console.log('App useEffect' )
+  // }, [])
 
-  console.log('obj', obj)
-  return (
-    <div className="App">
-      <Header />
-      {/* <button onClick={() => {setCount(count + 1)}}>点击发起更新 {count}</button> */}
+  // const footer = createElement('div', { style: {fontSize: 20}, children: 'footer' }, )
 
-      <button className="customButton" onClick={() => {setList(['C', 'A', 'X'])}}>点击发起更新</button>
-      <div>
-        {list.map(item => <p key={item}>{item}</p>)}
-      </div>
-    </div>
-  );
+  // console.log('obj', obj)
+  return <div>Hello, React!</div>
+  // return (
+  //   <div className="App">
+  //     <Header />
+  //     {/* <button onClick={() => {setCount(count + 1)}}>点击发起更新 {count}</button> */}
+
+  //     <button className="customButton" onClick={() => {setList(['C', 'A', 'X'])}}>点击发起更新</button>
+  //     <div>
+  //       {list.map(item => <p key={item}>{item}</p>)}
+  //     </div>
+  //     {footer}
+  //   </div>
+  // );
 }
 
 export default App;
