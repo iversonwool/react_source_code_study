@@ -1,8 +1,8 @@
-import {useState, useEffect, createElement} from 'react';
-import logo from './logo.svg';
+import {useState, useEffect, createElement, Component} from 'react';
+// import logo from './logo.svg';
 import './App.css';
 import obj from './script1'
-import {root} from './index'
+import {root} from '.'
 
 function getArray(obj) {
   const {title} = obj
@@ -26,40 +26,59 @@ function Header() {
   )
 }
 
-function App() {
-  // const [count, setCount] = useState(0)
-  // const [list, setList] = useState(['A', 'B', 'C'])
-  // useEffect(() => {
-  //   console.log('App useEffect' )
-  // }, [])
+// function App() {
+//   // const [count, setCount] = useState(0)
+//   // const [list, setList] = useState(['A', 'B', 'C'])
+//   // useEffect(() => {
+//   //   console.log('App useEffect' )
+//   // }, [])
 
-  // const footer = createElement('div', { style: {fontSize: 20}, children: 'footer' }, )
+//   // const footer = createElement('div', { style: {fontSize: 20}, children: 'footer' }, )
 
-  // console.log('obj', obj)
-  const changeArray = () => {
-    // setArray(getArray({}))
-    array.push({id: 'ss', title: 'ss'})
-    setArray([...array])
+//   // console.log('obj', obj)
+//   const changeArray = () => {
+//     // setArray(getArray({}))
+//     array.push({id: 'ss', title: 'ss'})
+//     setArray([...array])
+//   }
+//   const [array, setArray] = useState(getArray({}))
+//   return (
+//     <div>Hello, React!
+//       <button onClick={changeArray}>click me</button>
+//       <TestDependcies array={array} />
+//     </div>
+//   )
+//   // return (
+//   //   <div className="App">
+//   //     <Header />
+//   //     {/* <button onClick={() => {setCount(count + 1)}}>点击发起更新 {count}</button> */}
+
+//   //     <button className="customButton" onClick={() => {setList(['C', 'A', 'X'])}}>点击发起更新</button>
+//   //     <div>
+//   //       {list.map(item => <p key={item}>{item}</p>)}
+//   //     </div>
+//   //     {footer}
+//   //   </div>
+//   // );
+// }
+
+class App extends Component {
+  state = {
+    message: 'Hello world'
   }
-  const [array, setArray] = useState(getArray({}))
-  return (
-    <div>Hello, React!
-      <button onClick={changeArray}>click me</button>
-      <TestDependcies array={array} />
-    </div>
-  )
-  // return (
-  //   <div className="App">
-  //     <Header />
-  //     {/* <button onClick={() => {setCount(count + 1)}}>点击发起更新 {count}</button> */}
 
-  //     <button className="customButton" onClick={() => {setList(['C', 'A', 'X'])}}>点击发起更新</button>
-  //     <div>
-  //       {list.map(item => <p key={item}>{item}</p>)}
-  //     </div>
-  //     {footer}
-  //   </div>
-  // );
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({message: 'LeeHow'});
+    }, 1500)
+  }
+  render() {
+    console.log('-+-+-')
+    return (<div>{
+      this.state.message
+    }</div>)
+  }
 }
 
 export default App;
